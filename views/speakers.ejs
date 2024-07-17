@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Registration Data</title>
+    <style>
+        .card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Speaker Registration Data</h1>
+    <% if (speakers && speakers.length > 0) { %>
+        <% speakers.forEach(speaker => { %>
+            <div class="card">
+                <h2><%= speaker.firstname %> <%= speaker.last_name %></h2>
+                <p>Email: <%= speaker.email %></p>
+                <p>Phone: <%= speaker.phone_number %></p>
+                <p>Company: <%= speaker.company_name %></p>
+                <p>Session Type: <%= speaker.session_type %></p>
+                <p>Lecture Title: <%= speaker.lecture_title %></p>
+                <p>Web3 Role: <%= speaker.web3_role %></p>
+                <% if (speaker.website_or_portfolio) { %>
+                    <p>Website/Portfolio: <a href="<%= speaker.website_or_portfolio %>" target="_blank"><%= speaker.website_or_portfolio %></a></p>
+                <% } %>
+                <% if (speaker.x_handle) { %>
+                    <p>X Handle: <%= speaker.x_handle %></p>
+                <% } %>
+                <p>Category: <%= speaker.category || 'N/A' %></p>
+                <p>Session Abstract: <%= speaker.session_abstract %></p>
+                <p>Available Any Day: <%= speaker.available_at_any_day ? 'Yes' : 'No' %></p>
+                <p>Location: <%= speaker.location || 'N/A' %></p>
+                <p>Telegram ID: <%= speaker.telegram_id || 'N/A' %></p>
+                <p>Spoken at Web3 Before: <%= speaker.spoken_at_web3_before ? 'Yes' : 'No' %></p>
+                <p>Gender: <%= speaker.gender || 'N/A' %></p>
+                <% if (speaker.profilepicurl) { %>
+                    <img src="<%= speaker.profilepicurl %>" alt="<%= speaker.firstname %>'s profile picture" style="max-width: 200px;">
+                <% } %>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No speaker data available.</p>
+    <% } %>
+</body>
+</html>
